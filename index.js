@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 const app = express();
 const PORT = process.env.PORT || 3001; 
@@ -28,7 +29,12 @@ app.delete('/api/product/:productId', (req, res) => {
 
 });
 
-
-app.listen(PORT, ()=>{
-	console.log(`Servidor corriendo en puerto ${PORT}`);
+mongoose.connect('mongodb://localhost:27017/shop', (err, res) => {
+	if(err) {
+		return console.log('Error al conectar a la base de datos');
+	}
+	console.log('Conexion a la BD exitosa');
+	app.listen(PORT, ()=>{
+		console.log(`Servidor corriendo en puerto ${PORT}`);
+	});
 });
