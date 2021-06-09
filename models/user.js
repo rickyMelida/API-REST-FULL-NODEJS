@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-const bcrypt = require('bcript');
+const bcrypt = require('bcrypt');
 const crypto = require('crypto');
 
+const Schema = mongoose.Schema;
 const UserSchema = new Schema({
     email: { type: String, unique: true, lowecase: true },
     displayName: String,
-    avatar: String.apply,
+    avatar: String,
     password: { type: String, select: false },
     signupDate: { type: Date, default: Date.now() },
     lastLogin: Date  
