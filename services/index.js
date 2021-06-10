@@ -15,7 +15,7 @@ function createToken(user) {
 function decodeToken(token) {
     const decode = new Promise((resolve, reject) => {
         try {
-            const payload = jwt.decode(toekn, config.SECRET_TOKEN);
+            const payload = jwt.decode(token, config.SECRET_TOKEN);
 
             if(payload.exp <= moment().unix()) {
                 reject({
